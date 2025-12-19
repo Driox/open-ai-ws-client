@@ -1,7 +1,7 @@
 package io.cequence.wsclient.service
 
-import akka.stream.scaladsl.Source
-import akka.util.ByteString
+import org.apache.pekko.stream.scaladsl.Source
+import org.apache.pekko.util.ByteString
 import io.cequence.wsclient.JsonUtil
 import io.cequence.wsclient.domain._
 import io.cequence.wsclient.service.ws.FilePart

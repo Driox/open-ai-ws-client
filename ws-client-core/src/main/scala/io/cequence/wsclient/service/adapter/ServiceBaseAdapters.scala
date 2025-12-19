@@ -1,6 +1,6 @@
 package io.cequence.wsclient.service.adapter
 
-import akka.stream.Materializer
+import org.apache.pekko.stream.Materializer
 import com.typesafe.scalalogging.Logger
 import io.cequence.wsclient.service.CloseableService
 import io.cequence.wsclient.service.adapter.ServiceWrapperTypes.CloseableServiceWrapper
