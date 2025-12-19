@@ -52,7 +52,7 @@ The project is organized into 4 SBT modules:
    - Defines `WSClient`, `WSClientEngine`, and `WSClientBase` traits
    - Contains domain models (`RichResponse`, `WsRequestContext`, `CequenceWSException`)
    - Provides service adapters (logging, retries, round-robin, parallel execution)
-   - Uses Akka Streams for reactive data handling
+   - Uses Pekko Streams for reactive data handling
 
 2. **ws-client-play** - Play WS backend implementation
    - Depends on `ws-client-core`
@@ -64,7 +64,7 @@ The project is organized into 4 SBT modules:
 3. **ws-client-play-stream** - Streaming extensions
    - Depends on `ws-client-core` and `ws-client-play`
    - Adds `PlayWSStreamClientEngine` for Server-Sent Events (SSE)
-   - Uses Akka HTTP for JSON streaming over WebSockets
+   - Uses Pekko HTTP for JSON streaming over WebSockets
    - Streaming frame limit: 20,000 bytes (defaultMaxFrameLength)
 
 4. **json-repair** - JSON repair utility
@@ -117,10 +117,10 @@ Use `PlayWSClientEngine.withContextFun()` to provide dynamic context per request
 
 The build manages different dependency versions for Scala 2.12, 2.13, and 3.2:
 - Play JSON: 2.8.2 (Scala 2.12/2.13), 2.10.0-RC6 (Scala 3.2)
-- Akka Stream: 2.6.1 (Scala 2.12), 2.6.20 (Scala 2.13/3.2)
+- Pekko Stream: 1.4.0 (Scala 2.12), 1.4.0 (Scala 2.13/3.2)
 - Play WS: 2.1.11 (Scala 2.12/2.13), 2.2.0-M2 (Scala 3.2)
 
-Scala 3 requires manual cross-version suffix handling (e.g., `akka-stream_2.13` for Scala 3).
+Scala 3 requires manual cross-version suffix handling (e.g., `pekko-stream_2.13` for Scala 3).
 
 ## Testing
 
@@ -132,8 +132,8 @@ Scala 3 requires manual cross-version suffix handling (e.g., `akka-stream_2.13` 
 
 - Play JSON - JSON serialization/deserialization
 - Play WS Standalone - HTTP client
-- Akka Streams - Reactive stream processing
-- Akka HTTP - WebSocket and SSE support (streaming module)
+- Pekko Streams - Reactive stream processing
+- Pekko HTTP - WebSocket and SSE support (streaming module)
 - scala-logging + logback - Logging
 - ScalaTest - Testing framework (test scope)
 
@@ -142,7 +142,7 @@ Scala 3 requires manual cross-version suffix handling (e.g., `akka-stream_2.13` 
 ### Creating a WS Client
 ```scala
 import io.cequence.wsclient.service.ws.PlayWSClientEngine
-import akka.stream.Materializer
+import org.apache.pekko.stream.Materializer
 import scala.concurrent.ExecutionContext
 
 implicit val materializer: Materializer = ???
