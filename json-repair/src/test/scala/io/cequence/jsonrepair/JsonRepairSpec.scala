@@ -68,7 +68,7 @@ class JsonRepairSpec extends AnyFlatSpec with Matchers {
     JsonRepair.repairJson(
       """{"key": "value\u263A"}""",
       ensureAscii = false
-    ) shouldBe """{"key":"value\u263A"}"""
+    ) shouldBe """{"key":"value☺"}"""
 
     JsonRepair.repairJson(
       """{"key": "value\\nvalue"}"""
